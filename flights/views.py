@@ -22,6 +22,6 @@ def book(request, flight_id):
     if request.method == "POST":
         # error check for exist flight and passenger
         flight = Flight.objects.get(id=flight_id)
-        passenger = Passenger.objects.get(int(request.POST["passenger"]))
+        passenger = Passenger.objects.get(id=int(request.POST["passenger"]))
         passenger.flights.add(flight)
         return HttpResponseRedirect(reverse("flight-detail", args=(flight.id,)))
